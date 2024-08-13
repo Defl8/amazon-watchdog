@@ -1,6 +1,6 @@
 import unittest
 from bs4 import BeautifulSoup
-from watchdog.item.helpers import get_item_price
+from watchdog.item.helpers import get_item_price, get_item_name
 
 
 class TestHtmlSearching(unittest.TestCase):
@@ -14,6 +14,20 @@ class TestHtmlSearching(unittest.TestCase):
 
         soup: BeautifulSoup = BeautifulSoup(html_doc, 'html.parser')
         func_result: str = get_item_price(soup)
+        print("Testing if get_item_price is working...")
+        print(f"Expected result is {expected_result}")
+        print(f"Function result is {func_result}")
+
+        self.assertEqual(func_result, expected_result)
+
+
+    def test_get_name_valid(self):
+        html_doc: str = """
+            <span id="productTitle">Test Name</span>
+            """
+        expected_result: str = "Test Name"
+        soup: BeautifulSoup = BeautifulSoup(html_doc, 'html.parser')
+        func_result: str = get_item_name(soup)
         print("Testing if get_item_price is working...")
         print(f"Expected result is {expected_result}")
         print(f"Function result is {func_result}")
