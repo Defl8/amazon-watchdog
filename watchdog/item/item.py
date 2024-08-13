@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 
-from watchdog.item.helpers import get_item_price, get_item_page_html
+from watchdog.item.helpers import get_item_price, get_item_page_html, get_item_name
 
 
 class Item:
@@ -29,7 +29,9 @@ class Item:
     def name(self) -> str:
         return self.__name
 
-    # TODO: put method to set name here 
+
+    def set_name(self) -> str:
+        return get_item_name(self.__soup)
 
 
     @property
@@ -37,7 +39,7 @@ class Item:
         return self.__price
 
 
-    def set_price(self):
+    def set_price(self) -> str:
         return get_item_price(self.__soup)
     
 
@@ -45,4 +47,3 @@ class Item:
         html: str | None = get_item_page_html(self.url)
         soup: BeautifulSoup = BeautifulSoup(html, 'html.parser')
         return soup
-
