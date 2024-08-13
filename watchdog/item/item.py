@@ -6,7 +6,7 @@ from watchdog.item.helpers import get_item_price, get_item_page_html, get_item_n
 class Item:
     def __init__(self, url: str):
         self.__url: str = url
-        self.__name: str = ""
+        self.__name: str = self.set_name()
         self.__price: str = self.set_price()  
         self.__soup: BeautifulSoup = self.make_soup()
 
