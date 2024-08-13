@@ -22,3 +22,10 @@ def get_item_price(soup_html: BeautifulSoup) -> str:
         price += tag.text
 
     return price
+
+
+def get_item_name(soup_html: BeautifulSoup) -> str:
+    ITEM_NAME_ID: str = "productTitle"
+    tag: ResultSet[Any] = soup_html.find(id=ITEM_NAME_ID)
+    product_name: str = tag.text
+    return product_name
