@@ -20,11 +20,6 @@ class Item:
         return self.__soup
 
 
-    @url.setter
-    def url(self, url: str) -> None:
-        self.__url = url
-
-
     @property
     def name(self) -> str:
         return self.__name
